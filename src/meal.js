@@ -1,3 +1,22 @@
+
+// I see this function writes our meal form data to the json file, and then saves it to localStorage
+// There is a bug when we try and add more than 1 meal.
+
+// The localstorage will only ever have the first meal added, because we read from data.json each time
+
+// When we refresh the page, we only get the meals from the json + the last meal that we added
+
+// Sample fix:
+function addMealExample(meal) {
+    mealsData.push(meal);
+    const dataToSave = { meals: mealsData };
+    localStorage.setItem('mealsData', JSON.stringify(dataToSave));
+    console.log("Meal added & saved:", meal);
+
+    // And then when we call this in LoadMealsData, we read from localStorage only
+    // or if there is nothing in localStorage, we read from data.json 
+}
+
 var addMeal = function(meal) {
     console.log("Meal added:", meal);
     
