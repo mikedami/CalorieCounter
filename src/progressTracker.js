@@ -91,6 +91,8 @@ var getDailySummary = function(selectedDate) {
         }};
     }
 
+    // COMMENT
+    // Very nice use of the reduce method which we learned during the lecture
     const totals = todayMeals.reduce(
         (acc, f) => ({
             calories: acc.calories + (f.calories || 0),
