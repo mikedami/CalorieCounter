@@ -379,6 +379,9 @@ function createMacroCard(name, consumed, remaining, percent, unit) {
 }
 
 // Create the meal input form
+
+// COMMENT
+// The index.html contains all elements for web app - consider adding this to the index.html as it is a static form
 function createMealForm() {
     mealFormElement.innerHTML = `
         <form id="add-meal-form" class="space-y-4">
