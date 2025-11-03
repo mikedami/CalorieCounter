@@ -1,6 +1,7 @@
 var addMeal = function(meal) {
     console.log("Meal added:", meal);
-    
+
+    // Good job using a catch() so the app doesn't break if the JSON fails to load for wtv reason
     fetch('../data.json')
         .then(response => response.json())
         .then(data => {
@@ -50,7 +51,8 @@ var addMeal = function(meal) {
 // Helper function to create a meal object with current timestamp
 var createMeal = function(name, calories, carbs, fat, protein, customDate) {
     const date = customDate || new Date().toISOString().slice(0, 16).replace('T', ' ');
-    
+
+    // Might want to add validation here like check for negative numbers or missing name
     return {
         name: name,
         calories: calories,
@@ -70,6 +72,7 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 } else {
     // Browser environment - attach to window object
+    // Nice job handling both Node.js and browser environments
     window.addMeal = addMeal;
     //window.addMealToFile = addMealToFile;
     //Becuase of CORS, we can't use Node.JS version

@@ -20,6 +20,8 @@ var updateWeightAndHeight = function({ currentWeight, targetWeight, heightFeet, 
         heightMeters = feet * 0.3048 + inches * 0.0254;
     }
 
+    // Nice use of ... operator here to keep existing progress data
+    // while only updating fields you want to change.
     data.progress = {
         ...data.progress,
         currentWeight: Number(currentWeight ?? data.progress?.currentWeight),
@@ -28,7 +30,7 @@ var updateWeightAndHeight = function({ currentWeight, targetWeight, heightFeet, 
     };
 
     localStorage.setItem('mealsData', JSON.stringify(data));
-    console.log("✅ Weight and height updated in localStorage");
+    console.log("? Weight and height updated in localStorage");
 };
 
 // ----------------------
@@ -49,7 +51,7 @@ var updateTargetMacros = function({ targetCals, targetCarbs, targetFat, targetPr
     };
 
     localStorage.setItem('mealsData', JSON.stringify(data));
-    console.log("✅ Daily macro targets updated in localStorage");
+    console.log("? Daily macro targets updated in localStorage");
 };
 
 // ----------------------
@@ -72,6 +74,8 @@ var getProgress = function() {
 // ----------------------
 // Get Daily Summary (Macros)
 // ----------------------
+// This function is doing a lot of work maybe break it into smaller helper functions
+// like filterMealsByDate() and calculateTotals()
 var getDailySummary = function(selectedDate) {
     const localData = localStorage.getItem('mealsData');
     const data = localData ? JSON.parse(localData) : { meals: [], progress: {} };
