@@ -1,3 +1,9 @@
+/*
+  - Really great application!
+  - Easy to read, concise and precise comments
+  - Really like how the team went beyond and create a full frotnend for it
+*/
+
 // Calorie Counter Main Application
 console.log("🍽️ Calorie Counter App Loading...");
 
